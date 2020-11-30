@@ -1,28 +1,10 @@
-import express from 'express'
+const app  = require('./app')
+const port = process.env.PORT || 5000
 
-const app = express()
+//* запускаем сервер express  на порту 5000
 
-
-
-//* обрабатываем ошибки, чтобы узнать статус сервера 
-// * - node index.js
-app.get(
-  "/", (req, res) => {
-    (res).status(200).json({
-      message: 'working'
-    })
-  }
-)
-
-
-
-
-//* зарускаем сервер express  на порту 500
 app.listen(
-  500,
-  ()=> console.log('Has been started')
+  port,
+  ()=> console.log(`Has been started on ${port}`)
   )
-  
-
-
   
