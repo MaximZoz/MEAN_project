@@ -6,10 +6,10 @@ const controller = require('../controllers/auth')
 
 
 //*
-router.get(
+router.post(
 '/login', controller.login
 )
-router.get(
+router.post(
 '/register', controller.register
 )
 
