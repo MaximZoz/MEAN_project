@@ -1,18 +1,13 @@
-## 2.6 Парсинг данных пользователя
+## 2.7 Подключение утилит
 
-## дорабатываем роут логина
-
-#### устанавливаем пакет body-parser для того, чтобы сервер понимал наши запросы
-
-- npm i body-parser
-
-#### подключаем пакет body-parser
+#### подключаем доп пакеты cors и морган
 
 app.js =>
 
-- app.use(bodyParser.urlencoded({extended: true}))
-- app.use(bodyParser.json())
+- app.use(morgan("dev"))
+- app.use(cors())
+- npm i cors morgan
 
-#### проверяем req и res на удалённом сервисе postman
+#### при запросе post в node появляются данные по роутам
 
-- https://web.postman.co/workspace/0c85ea99-fe8e-49d8-8ae6-9254e6d73f5b/request/create?requestId=ca19626b-c3a5-4d9c-ac67-2b64725b5edc
+- POST /api/auth/login 200 73.414 ms - 61

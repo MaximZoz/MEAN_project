@@ -1,5 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const morgan = require("morgan");
 
 const app = express();
 
@@ -8,6 +10,9 @@ const authRoutes = require("./routes/auth");
 const categoryRoutes = require("./routes/category");
 const orderRoutes = require("./routes/order");
 const positionRoutes = require("./routes/position");
+
+app.use(morgan("dev"));
+app.use(cors());
 
 app.use(
   bodyParser.urlencoded({
