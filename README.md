@@ -1,13 +1,16 @@
-## 2.7 Подключение утилит
+## 2.8 Создание моделей
 
-#### подключаем доп пакеты cors и морган
+### устанавливаем модели, которые будут работать с базой данных
 
-app.js =>
+#### устанавливаем пакет mongoose
 
-- app.use(morgan("dev"))
-- app.use(cors())
-- npm i cors morgan
+- npm i mongoose
 
-#### при запросе post в node появляются данные по роутам
+#### создаём модель для категорий, импортируем туда mongoose
 
-- POST /api/auth/login 200 73.414 ms - 61
+models =>
+
+- Category
+- Order
+- Position
+- User
