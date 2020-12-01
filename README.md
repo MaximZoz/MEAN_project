@@ -1,17 +1,18 @@
-## 2.5 Создание всех роутов
+## 2.6 Парсинг данных пользователя
 
-#### создаём все роуты и контроллеры для api
+## дорабатываем роут логина
 
-routes =>
+#### устанавливаем пакет body-parser для того, чтобы сервер понимал наши запросы
 
-- analytics
-- auth
-- category
-- order
-- position
+- npm i body-parser
 
-#### добавляем методы для роутов в категории
+#### подключаем пакет body-parser
 
-#### подключаем роуты в app => app.use
+app.js =>
 
-#### добавляем методы в роуты
+- app.use(bodyParser.urlencoded({extended: true}))
+- app.use(bodyParser.json())
+
+#### проверяем req и res на удалённом сервисе postman
+
+- https://web.postman.co/workspace/0c85ea99-fe8e-49d8-8ae6-9254e6d73f5b/request/create?requestId=ca19626b-c3a5-4d9c-ac67-2b64725b5edc
