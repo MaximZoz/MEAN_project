@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 
 const app = express();
+
+const keys = require("./config/keys");
 
 const analyticsRoutes = require("./routes/analytics");
 const authRoutes = require("./routes/auth");
@@ -13,6 +16,10 @@ const positionRoutes = require("./routes/position");
 
 app.use(morgan("dev"));
 app.use(cors());
+mongoose
+  .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected"))
+  .catch((error) => console.log(error));
 
 app.use(
   bodyParser.urlencoded({
