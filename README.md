@@ -1,25 +1,9 @@
-## 2.9 Подключение mongodb
+## 3.1 Начало создания регистрации
 
-#### устанавливаем пакет mongoose
+### реализовываем роут auth (создаём пользователя)
 
-- npm i mongoose
+#### подключаем пользователя
 
-#### подключаем mongoose к mongoDB
+controllers\auth.js => module.exports.register =>
 
-app.js =>
-
-- mongoose.connect("").then(() => console.log("MongoDB connected")).catch((error) => console.log(error))
-
-#### создаём файл конфигурации в котором будем хранить ключи и помещаем туда URI MongoDB
-
-config\keys.js =>
-
-- module.exports = {mongoURI:"mongodb+srv://Zozulya:Zozulya39@cluster0.bkrqc.mongodb.net/Zozulya?retryWrites=true&w=majority"}
-
-#### подключаем MongoDB к приложению
-
-app.js =>
-
-- mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-
-
+- const user
