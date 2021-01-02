@@ -9,10 +9,15 @@ module.exports.login = function (req, res) {
   });
 };
 
-module.exports.register = function (req, res) {
-  const user = new User({
-    email: req.body.email,
-    password: req.body.password,
-  });
-  user.save().then(() => console.log("User created"));
+module.exports.register = async function (req, res) {
+  const candidate = await User.findOne({ email: req.body.email });
+
+  if (candidate) {
+    //* пользователь существует, нужно отдать ошибку
+    res.status(409).json({
+      message: "Такой email уже занят, попробуйте другой",
+    });
+  } else {
+    // * нужно создать пользователя
+  }
 };
