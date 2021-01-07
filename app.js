@@ -17,7 +17,11 @@ const positionRoutes = require("./routes/position");
 app.use(morgan("dev"));
 app.use(cors());
 mongoose
-  .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(keys.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 

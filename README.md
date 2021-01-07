@@ -1,23 +1,16 @@
-## 3.3 Создание пользователя
+## 3.4 Логин в систему
 
-#### создаём пользователя и сохраняем логин и пароль
+#### реализовываем функцию логина и генерируем токен
 
-controllers\auth.js => module.exports.register =>
+controllers\auth.js => module.exports.login =>
 
-- const user
+- candidate
 
-#### скачиваем пакет, который позволит нам шфровать пароли (bcryptJS)
+#### подключаем jsonwebtoken
 
-- npm i bcryptjs
+- npm i jsonwebtoken
+- const token
 
-#### создаём хеш, который будет уникальным для донного пароля
+  config\keys.js =>
 
-controllers\auth.js => module.exports.register =>
-
-- const salt
-
-#### добавляем хеш к паролю от клиента
-
-controllers\auth.js => module.exports.register => const user
-
-- password: bcrypt.hashSync(password, salt)
+  - jwt
