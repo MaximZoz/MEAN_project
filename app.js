@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const passport = require("passport");
 
 const app = express();
 
@@ -24,6 +25,9 @@ mongoose
   })
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
+
+app.use(passport.initialize());
+require("./middleware/passport")(passport);
 
 app.use(
   bodyParser.urlencoded({

@@ -1,16 +1,21 @@
-## 3.4 Логин в систему
+## 3.5 Защита роутов с passport js
 
-#### реализовываем функцию логина и генерируем токен
+#### устанавливаем passport js и инициализируем его
 
-controllers\auth.js => module.exports.login =>
+http://www.passportjs.org/packages/ => passport-jwt
 
-- candidate
+- npm install passport passport-jwt
 
-#### подключаем jsonwebtoken
+  middleware\passport.js =>
 
-- npm i jsonwebtoken
-- const token
+- JwtStrategy
 
-  config\keys.js =>
+- ExtractJwt
 
-  - jwt
+- options
+
+#### проверяем есть ли ответ при запросе get при авторизации и без неё
+
+controllers\category.js => module.exports.getAll => res => message =>
+
+- categories
