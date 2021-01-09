@@ -1,21 +1,16 @@
-## 3.5 Защита роутов с passport js
+## 3.6 Универсальная обработка ошибок
 
-#### устанавливаем passport js и инициализируем его
+#### напишем универсальную утилиту для обработки ошибок
 
-http://www.passportjs.org/packages/ => passport-jwt
+utils\errorHandler.js =>
 
-- npm install passport passport-jwt
+- (res, error) => {}
 
-  middleware\passport.js =>
+#### подключаем универсальную утилиту для обработки ошибок
 
-- JwtStrategy
+controllers\auth.js =>
 
-- ExtractJwt
+- errorHandler(res, e)
 
-- options
 
-#### проверяем есть ли ответ при запросе get при авторизации и без неё
 
-controllers\category.js => module.exports.getAll => res => message =>
-
-- categories
