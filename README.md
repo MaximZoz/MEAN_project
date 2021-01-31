@@ -1,16 +1,15 @@
-## 3.6 Универсальная обработка ошибок
+## 4.1 получение всех позиций
 
-#### напишем универсальную утилиту для обработки ошибок
+## реализовываем метод получения всех позиций по id категориям
 
-utils\errorHandler.js =>
+#### реализовываем errorHandler во всех всех методах конроллера
 
-- (res, error) => {}
+controllers\position.js =>
 
-#### подключаем универсальную утилиту для обработки ошибок
+- errorHandler
 
-controllers\auth.js =>
+#### получаем список всех позиций в методе конроллера getByCategoryId
 
-- errorHandler(res, e)
+controllers\position.js =>
 
-
-
+- const positions
