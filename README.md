@@ -1,19 +1,23 @@
-## 4.2 функционал позиций
+## 4.3 Получение и удаление категорий
 
-## реализовываем метод создания новой категории
+#### реализовываем метод получения всех категорий getAll
+
+controllers\category.js => module.exports.getAll =>
+
+- const categories
+
+#### реализовываем метод получения категорий по id getById
+
+controllers\position.js => module.exports.getById =>
+
+- const category
+
+#### реализовываем метод удаления категории и позиции по id
 
 controllers\position.js =>
+const Position
 
-- position
+controllers\position.js => module.exports.create =>
 
-#### реализовываем метод удаления категории
-
-controllers\position.js =>
-
-- const remove
-
-#### реализовываем метод изменения категории
-
-controllers\position.js =>
-
-- const update
+- await Category.remove
+- await Position.remove
