@@ -1,18 +1,20 @@
-## 4.4 Конфигурация загрузки файлов
+## 4.5 Создание категорий
 
-#### устанавливаем пакеты multer и moment, которыеотвечает за загрузку файлов и работу с данными
+#### реализовываем метод создания новой категории в методе create
 
-npm i multer moment
+controllers\category.js => module.exports.create =>
 
-#### реализовываем функционал, который позволяет загружать картинки в методе create
+- const category
 
-middleware\upload.js =>
+#### реализовываем возможность загружать картинки с сервера
 
-- storage
-- fileFilter
-- limits
-- module.exports = multer
+app.js => app.use("/uploads") =>
 
-#### папка для загрузок, gitkeep - чтобы она не удалялась гитом
+- express.static("uploads")
 
-\uploads => gitkeep
+#### реализовываем метод метод обновления категории в методе update
+
+controllers\category.js => module.exports.update =>
+
+- const updated
+- const category

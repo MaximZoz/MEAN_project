@@ -16,6 +16,7 @@ const orderRoutes = require("./routes/order");
 const positionRoutes = require("./routes/position");
 
 app.use(morgan("dev"));
+app.use("/uploads", express.static("uploads"));
 app.use(cors());
 mongoose
   .connect(keys.mongoURI, {
