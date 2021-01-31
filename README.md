@@ -1,23 +1,18 @@
-## 4.3 Получение и удаление категорий
+## 4.4 Конфигурация загрузки файлов
 
-#### реализовываем метод получения всех категорий getAll
+#### устанавливаем пакеты multer и moment, которыеотвечает за загрузку файлов и работу с данными
 
-controllers\category.js => module.exports.getAll =>
+npm i multer moment
 
-- const categories
+#### реализовываем функционал, который позволяет загружать картинки в методе create
 
-#### реализовываем метод получения категорий по id getById
+middleware\upload.js =>
 
-controllers\position.js => module.exports.getById =>
+- storage
+- fileFilter
+- limits
+- module.exports = multer
 
-- const category
+#### папка для загрузок, gitkeep - чтобы она не удалялась гитом
 
-#### реализовываем метод удаления категории и позиции по id
-
-controllers\position.js =>
-const Position
-
-controllers\position.js => module.exports.create =>
-
-- await Category.remove
-- await Position.remove
+\uploads => gitkeep
