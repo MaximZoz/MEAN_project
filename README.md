@@ -1,20 +1,33 @@
-## 4.5 Создание категорий
+## 4.6 Функционал заказов
 
-#### реализовываем метод создания новой категории в методе create
+#### защищаем роуты
 
-controllers\category.js => module.exports.create =>
+routes\order.js =>
 
-- const category
+- passport.authenticate
 
-#### реализовываем возможность загружать картинки с сервера
+## реализовываем метод create
 
-app.js => app.use("/uploads") =>
+controllers\order.js => module.exports.create =>
 
-- express.static("uploads")
+- const order
 
-#### реализовываем метод метод обновления категории в методе update
+#### получаем данные последних заказов из базы и сортируем их в порядке убывания
 
-controllers\category.js => module.exports.update =>
+controllers\order.js => module.exports.create =>
 
-- const updated
-- const category
+- lastOrder
+
+## реализовываем метод getAll
+
+controllers\order.js => module.exports.getAll =>
+
+- const query
+
+#### сортируем данные всех заказов в порядке убывания по дате
+
+controllers\order.js => module.exports.getAll =>
+
+- if (req.query.start)
+- if (req.query.end)
+- if (req.query.order)
