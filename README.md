@@ -1,9 +1,7 @@
-## 5.3 Настройка темы
+## 5.4 Настройка прокси
 
-#### устанавливаем тему
+- client\proxy.conf.json
 
-client\src\theme
+client\package.json => start =>
 
-#### устанавливаем materialize
-
-- npm install materialize-css@next
+- --proxy-config proxi.conf.json
