@@ -1,11 +1,9 @@
-## 5.2 Настройка запуска
+## 5.3 Настройка темы
 
-#### устанавливаем пакет concurrently
+#### устанавливаем тему
 
-- npm i -D concurrently
+client\src\theme
 
-#### запускаем серверную и клиенскую части одной командой
+#### устанавливаем materialize
 
-package.json => scripts => dev =>
-
-- npm run dev
+- npm install materialize-css@next
