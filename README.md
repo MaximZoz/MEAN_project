@@ -1,7 +1,6 @@
-## 5.4 Настройка прокси
+## 5.5 Создание роутинга
 
-- client\proxy.conf.json
-
-client\package.json => start =>
-
-- --proxy-config proxi.conf.json
+#### создаём новый компонент со страницей логина
+- ng g c login-page --skipTests
+#### реализовываем роутинг
+- client\src\app\app-routing.module.ts
