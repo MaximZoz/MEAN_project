@@ -1,12 +1,4 @@
-## 5.6 Создание роутинга
+## 5.7  Форма логина
 
-#### создаём новые компоненты для layout
-- client\src\app\register-page
-- client\src\app\login-page
-- client\src\app\shared\layouts\auth-layout
-- client\src\app\shared\layouts\site-layout
-
-#### реализовываем роутинг и редирект
-- client\src\app\app-routing.module.ts
-
-
+#### создаём form Group для ввола логина и пароля и валидируем их
+- login-page.component
