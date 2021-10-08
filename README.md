@@ -1,8 +1,12 @@
-## 5.10 Защита роутов с guard
+## 5.11 Токен interceptor
 
-#### реализуем класс authGuard
+#### забираем из localStorage токен и отдаём его в authService
 
-- client\src\app\shared\services\classes\authGuard.ts
-#### добавляем класс authGuard в appRouting.module
+- client\src\app\app.component.ts
 
-- client\src\app\app-routing.module.ts
+#### создаём класс TokenInterceptor 
+
+- client\src\app\shared\services\classes\tokenInterceptor.ts
+#### добавляем proveders для интерсептора
+
+- client\src\app\app.module.ts

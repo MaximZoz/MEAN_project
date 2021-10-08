@@ -30,7 +30,7 @@ export class AuthService {
     this.token = token;
   }
 
-  getToket(): string | null {
+  getToken(): string | null {
     return this.token;
   }
 
