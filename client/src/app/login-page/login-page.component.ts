@@ -31,7 +31,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       ]),
     });
     this.route.queryParams.subscribe((params: Params) => {
-      if (params['registeres']) {
+      if (params['registered']) {
         //* Терерь вы можете войти в систему, используя сови данные
       } else if (params['accessDenied']) {
         // * Для начала авторизуйтесь в системе
