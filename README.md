@@ -1,9 +1,8 @@
-## 5.9 Страница регистрации
+## 5.10 Защита роутов с guard
 
-#### добавляем метод в сервис регистрации
+#### реализуем класс authGuard
 
-- client\src\app\shared\services\auth.service.ts
+- client\src\app\shared\services\classes\authGuard.ts
+#### добавляем класс authGuard в appRouting.module
 
-#### вызываем сервис регистрации, подписываемся, отписываемся, роутимся
-
-- client\src\app\register-page\register-page.component.ts
+- client\src\app\app-routing.module.ts

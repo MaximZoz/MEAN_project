@@ -5,6 +5,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
+import { AuthGuard } from './shared/services/classes/authGuard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/login', pathMatch: 'full'
+        redirectTo: '/login',
+        pathMatch: 'full',
       },
       { path: 'login', component: LoginPageComponent },
       { path: 'register', component: RegisterPageComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
     path: '',
     component: SiteLayoutComponent,
     children: [],
+    canActivate: [AuthGuard],
   },
 ];
 
