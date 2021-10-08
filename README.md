@@ -1,6 +1,5 @@
-## 5.12 Вывод ошибок
+## 5.13 обработка 401 ошибки
 
-#### создаём класс toast из material для алерта
+#### выкидываем ошибку в токен интерсепторе если 401
 
-- client\src\app\shared\services\classes\materialService.ts
-
+- client\src\app\shared\services\classes\tokenInterceptor.ts
