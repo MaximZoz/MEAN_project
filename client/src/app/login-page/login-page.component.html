@@ -38,7 +38,7 @@
           Пароль не должен быть пустым
         </span>
         <span class="healper-text red-text" *ngIf="password!.errors!.minlength">
-          Пароль должен быть более 6 символов
+          Пароль должен быть более 4 символов
         </span>
       </span>
     </div>
@@ -47,7 +47,7 @@
     <button
       type="submit"
       class="modal-action btn waves-effect"
-      [disabled]="form!.invalid"
+      [disabled]="form.invalid || form.disabled"
     >
       Войти
     </button>
