@@ -1,12 +1,6 @@
-## 5.11 Токен interceptor
+## 5.12 Вывод ошибок
 
-#### забираем из localStorage токен и отдаём его в authService
+#### создаём класс toast из material для алерта
 
-- client\src\app\app.component.ts
+- client\src\app\shared\services\classes\materialService.ts
 
-#### создаём класс TokenInterceptor 
-
-- client\src\app\shared\services\classes\tokenInterceptor.ts
-#### добавляем proveders для интерсептора
-
-- client\src\app\app.module.ts
