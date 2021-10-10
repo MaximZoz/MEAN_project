@@ -1,9 +1,13 @@
-## 6.2 Добавление страниц
+## 6.3 Страница категорий
 
-#### Добавляем routerLink к кнопке "добавить"
+#### Создаём CategoriesService
 
-- client\src\app\shared\layouts\site-layout\site-layout.component.html
+- client\src\app\shared\services\categories.service
 
-#### OrderPageComponent, HistoryPageComponent, CategoriesPageComponent, AnalyticsPageComponent
+#### Создаём LoaderComponent
 
-- client\src\app
+- client\src\app\shared\components\loader\loader.component
+
+#### добавляем лоадер и запрос к получению категорий
+
+- client\src\app\categories-page\categories-page.component

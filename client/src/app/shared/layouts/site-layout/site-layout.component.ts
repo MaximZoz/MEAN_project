@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { MaterialService } from '../../services/classes/materialService';
+import { MaterialService } from '../../classes/materialService';
 
 @Component({
   selector: 'app-site-layout',

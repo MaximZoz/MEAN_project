@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../shared/services/auth.service';
-import { MaterialService } from '../shared/services/classes/materialService';
+import { MaterialService } from '../shared/classes/materialService';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',

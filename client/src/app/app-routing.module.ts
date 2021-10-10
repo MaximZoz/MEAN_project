@@ -10,7 +10,7 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
-import { AuthGuard } from './shared/services/classes/authGuard';
+import { AuthGuard } from './shared/classes/authGuard';
 
 const routes: Routes = [
   {

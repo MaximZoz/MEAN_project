@@ -9,12 +9,13 @@ import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.co
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './shared/services/classes/tokenInterceptor';
+import { TokenInterceptor } from './shared/classes/tokenInterceptor';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { AnalyticsPageComponent } from './analytics-page/analytics-page.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CategoriesPageComponent } from './categories-page/categories-page.compo
     HistoryPageComponent,
     OrderPageComponent,
     CategoriesPageComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
