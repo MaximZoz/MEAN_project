@@ -1,21 +1,9 @@
-## 6.1 Создание макета сайта
+## 6.2 Добавление страниц
 
-#### подключаем Material+Icons
+#### Добавляем routerLink к кнопке "добавить"
 
-- client\src\index.html
+- client\src\app\shared\layouts\site-layout\site-layout.component.html
 
-#### прописываем роуты для OverviewPageComponent как дочернего компонента SiteLayoutComponent
+#### OrderPageComponent, HistoryPageComponent, CategoriesPageComponent, AnalyticsPageComponent
 
-- client\src\app\app-routing.module.ts
-
-#### Создаём OverviewPageComponent
-
-- client\src\app\overview-page\overview-page.component
-
-#### в SiteLayoutComponent создаём макет сайта
-
-- client\src\app\shared\layouts\site-layout\site-layout.component
-
-#### создаём initializeFloatingButton при клике на кнопку дабавить
-
-- client\src\app\shared\services\classes\materialService
+- client\src\app
