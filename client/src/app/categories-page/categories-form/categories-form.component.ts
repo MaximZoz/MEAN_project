@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { MaterialService } from 'src/app/shared/classes/materialService';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
 
 @Component({
   selector: 'app-categories-form',
@@ -7,12 +12,50 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./categories-form.component.scss'],
 })
 export class CategoriesFormComponent implements OnInit {
+  form!: FormGroup;
   isNew: boolean = true;
-  constructor(private route: ActivatedRoute) {}
+  MaterialService: any;
+
+  constructor(
+    private route: ActivatedRoute,
+    private categoriesService: CategoriesService
+  ) {}
+
+  get name() {
+    return this.form.get('name');
+  }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      if (params?.id) this.isNew = false;
+    this.form = new FormGroup({
+      name: new FormControl(null, Validators.required),
     });
+
+    this.form.disable();
+    this.route.params
+      .pipe(
+        switchMap((params: Params) => {
+          if (params?.id) {
+            this.isNew = false;
+            return this.categoriesService.getById(params?.id);
+          }
+          return of(null);
+        })
+      )
+      .subscribe(
+        (category) => {
+          this.form.enable();
+          if (category) {
+            this.form.patchValue({
+              name: category.name,
+            });
+            MaterialService.updateTextInput();
+          }
+        },
+        (error) => {
+          MaterialService.toast(error.error.message);
+        }
+      );
   }
+
+  onSubmit() {}
 }

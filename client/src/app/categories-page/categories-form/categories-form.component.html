@@ -12,23 +12,43 @@
 </div>
 
 <div class="row">
-  <div class="col s12 l6">
+  <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input-field">
-      <input id="name" type="text" required />
+      <input
+        formControlName="name"
+        id="name"
+        type="text"
+        [ngClass]="{ invalid: name?.invalid && name?.touched }"
+      />
       <label for="name">Название</label>
+      <span
+        class="healper-text red-text"
+        *ngIf="name?.invalid && name?.touched"
+      >
+        <span *ngIf="name?.errors?.required"> Имя не может быть пустым </span>
+      </span>
     </div>
 
     <div>
-      <button class="waves-effect waves-light btn orange lighten-2 mb2">
+      <button
+        class="waves-effect waves-light btn orange lighten-2 mb2"
+        type="button"
+      >
         <i class="material-icons left">backup</i>
         Загрузить изображение
       </button>
     </div>
 
     <div>
-      <button class="waves-effect waves-light btn">Сохранить изменения</button>
+      <button
+        class="waves-effect waves-light btn"
+        type="submit"
+        [disabled]="form.invalid || !form.disabled"
+      >
+        Сохранить изменения
+      </button>
     </div>
-  </div>
+  </form>
 
   <div class="col s12 l4 center">
     <img class="responsive-img" style="height: 200px" src="cake.jpg" />
