@@ -10,6 +10,7 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/services/classes/tokenInterceptor';
+import { OverviewPageComponent } from './overview-page/overview-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TokenInterceptor } from './shared/services/classes/tokenInterceptor';
     AuthLayoutComponent,
     SiteLayoutComponent,
     RegisterPageComponent,
+    OverviewPageComponent,
   ],
   imports: [
     BrowserModule,
