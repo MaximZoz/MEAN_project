@@ -1,13 +1,5 @@
-## 6.3 Страница категорий
+## 6.4 Реализация flow вывода элементов
 
-#### Создаём CategoriesService
-
-- client\src\app\shared\services\categories.service
-
-#### Создаём LoaderComponent
-
-- client\src\app\shared\components\loader\loader.component
-
-#### добавляем лоадер и запрос к получению категорий
+#### реализовываем стрим categories$ добавляем ассинхронный запрос
 
 - client\src\app\categories-page\categories-page.component
