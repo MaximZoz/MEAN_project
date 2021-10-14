@@ -1,9 +1,8 @@
 const express = require("express");
 const passport = require("passport");
-
-const router = express.Router();
-const controller = require("../controllers/category");
 const upload = require("../middleware/upload");
+const controller = require("../controllers/category");
+const router = express.Router();
 
 router.get(
   "/",
@@ -29,6 +28,7 @@ router.post(
 router.patch(
   "/:id",
   passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
   controller.update
 );
 

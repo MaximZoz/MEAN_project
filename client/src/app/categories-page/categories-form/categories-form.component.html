@@ -2,7 +2,7 @@
   <h4>
     <a routerLink="/categories">Категории</a>
     <i class="material-icons">keyboard_arrow_right</i>
-    {{ isNew ? "Добавить " : "Редактировать " }}категорию
+    {{ isNew ? 'Добавить ' : 'Редактировать ' }}категорию
   </h4>
   <span>
     <button class="btn btn-small red">
@@ -25,12 +25,15 @@
         class="healper-text red-text"
         *ngIf="name?.invalid && name?.touched"
       >
-        <span *ngIf="name?.errors?.required"> Имя не может быть пустым </span>
+        <span *ngIf="name?.errors?.required">Имя не может быть пустым</span>
       </span>
     </div>
 
     <div>
+      <input type="file" class="dn" #input (change)="onFileUpload($event)" />
       <button
+        (click)="triggerClick()"
+        [disabled]="form.disabled || form.invalid"
         class="waves-effect waves-light btn orange lighten-2 mb2"
         type="button"
       >
@@ -43,7 +46,7 @@
       <button
         class="waves-effect waves-light btn"
         type="submit"
-        [disabled]="form.invalid || !form.disabled"
+        [disabled]="form.invalid || form.disabled"
       >
         Сохранить изменения
       </button>
@@ -51,7 +54,11 @@
   </form>
 
   <div class="col s12 l4 center">
-    <img class="responsive-img" style="height: 200px" src="cake.jpg" />
+    <img
+      class="responsive-img h200"
+      [src]="imagePreview"
+      *ngIf="imagePreview"
+    />
   </div>
 </div>
 <app-positions-form></app-positions-form>
