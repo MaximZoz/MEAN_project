@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -24,7 +24,8 @@ export class CategoriesFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private router: Router
   ) {}
 
   get name() {
@@ -78,6 +79,18 @@ export class CategoriesFormComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+
+  deleteCategory() {
+    const decision = window.confirm(`Удалить категорию ${this.category.name}`);
+    if (decision) {
+      this.categoriesService.delete(this.category._id as string).subscribe(
+        (response: { message: any }) => MaterialService.toast(response.message),
+        (error: any) => MaterialService.toast(error.error.message),
+        () => this.router.navigate(['/categories'])
+      );
+    }
+  }
+
   onSubmit() {
     let obs$;
     this.form.disable();
