@@ -1,17 +1,21 @@
-## 6.8 Удаление категории
+## 6.10 Добавление и редактирование позиций. Часть 2
 
-#### Скрываем кнопку удалить если это не новая категория
+#### в categories-form передаём в app-positions-form categoryId
 
-- client\src\app\categories-page\categories-form\categories-form.component.html => button => \*ngIf="!isNew"
+- client\src\app\categories-page\categories-form\categories-form.component.html => app-positions-form => categoryId
 
-#### реализовываем метод удаления категории
+#### создаём селектор модального окна modal
 
-- client\src\app\categories-page\categories-form\categories-form.component.ts => deleteCategory
+- client\src\app\categories-page\categories-form\positions-form\positions-form.component.html
 
-#### создаём интерфейс Message
+#### Создаём интерфейс Position
 
-- client\src\app\shared\interfaces.ts => Message
+- client\src\app\shared\interfaces.ts
 
-#### реализовываем метод delete в categories service
+#### в PositionsService создаём метод fetch
 
-- client\src\app\shared\services\categories.service.ts => delete
+- client\src\app\shared\services\positions.service.ts
+
+#### отображаем позиции
+
+- client\src\app\categories-page\categories-form\positions-form\positions-form.component.ts
