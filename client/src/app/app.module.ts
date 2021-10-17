@@ -1,46 +1,50 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
-import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './shared/classes/tokenInterceptor';
-import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { AnalyticsPageComponent } from './analytics-page/analytics-page.component';
-import { HistoryPageComponent } from './history-page/history-page.component';
-import { OrderPageComponent } from './order-page/order-page.component';
-import { CategoriesPageComponent } from './categories-page/categories-page.component';
-import { LoaderComponent } from './shared/components/loader/loader.component';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component';
+import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { OrderCategoriesComponent } from './order-page/order-categories/order-categories.component';
+import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderPossitionsComponent } from './order-page/order-possitions/order-possitions.component';
+import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { PositionsFormComponent } from './categories-page/categories-form/positions-form/positions-form.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
+import { TokenInterceptor } from './shared/classes/tokenInterceptor';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginPageComponent,
-    AuthLayoutComponent,
-    SiteLayoutComponent,
-    RegisterPageComponent,
-    OverviewPageComponent,
     AnalyticsPageComponent,
-    HistoryPageComponent,
-    OrderPageComponent,
-    CategoriesPageComponent,
-    LoaderComponent,
+    AppComponent,
+    AuthLayoutComponent,
     CategoriesFormComponent,
+    CategoriesPageComponent,
+    HistoryPageComponent,
+    LoaderComponent,
+    LoginPageComponent,
+    OrderCategoriesComponent,
+    OrderPageComponent,
+    OrderPossitionsComponent,
+    OverviewPageComponent,
     PositionsFormComponent,
+    RegisterPageComponent,
+    SiteLayoutComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor },
