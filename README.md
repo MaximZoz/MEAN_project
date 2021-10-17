@@ -1,23 +1,9 @@
-## 7.1 Создание структуры страницы
+## 7.2 Модальное окно заказа и навигация
 
-#### Создаём компоненты OrderPossitionsComponent и OrderCategoriesComponent
-
-- client\src\app\order-page\order-possitions\order-possitions.component.ts
-- client\src\app\order-page\order-categories\order-categories.component.ts
-
-#### Регистрируем их, прописываем роуты для дочерних компонентов
-
-- client\src\app\app-routing.module.ts
-- client\src\app\app.module.ts
-
-#### создаём структуру компонента заказов
+#### создаём на странице order-page логику отображение по роуту "isRoot" добавляем template модального окна
 
 - client\src\app\order-page\order-page.component.html
 
-#### Создаём заказы, выводим их в шаблон
+#### создаём OrderService для хранения состояния
 
-- client\src\app\order-page\order-categories\order-categories.component.html
-
-#### получаем заказы из бд, выводим их в шаблон
-
-- client\src\app\order-page\order-categories\order-categories.component.html
+- client\src\app\order-page\order.service.ts
