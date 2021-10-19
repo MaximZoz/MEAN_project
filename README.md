@@ -1,9 +1,13 @@
-## 7.2 Модальное окно заказа и навигация
+## 7.3 Вывод списка продукции
 
-#### создаём на странице order-page логику отображение по роуту "isRoot" добавляем template модального окна
-
-- client\src\app\order-page\order-page.component.html
-
-#### создаём OrderService для хранения состояния
+#### добавляем OrderService
 
 - client\src\app\order-page\order.service.ts
+
+#### layout order-possitions
+
+- client\src\app\order-page\order-possitions\order-possitions.component.html
+
+#### логика получения позиций
+
+- client\src\app\order-page\order-possitions\order-possitions.component.ts
