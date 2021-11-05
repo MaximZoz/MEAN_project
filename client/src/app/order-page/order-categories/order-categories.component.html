@@ -6,6 +6,7 @@
       class="card waves-effect pointer"
       *ngFor="let category of categories"
       [routerLink]="['/order', category._id]"
+      (click)="order.getCategories(category.name)"
     >
       <div class="center">
         <img [src]="category.imageSrc" class="responsive-img order-img" />

@@ -1,13 +1,13 @@
-## 7.3 Вывод списка продукции
+## 7.4 Создание заказа
 
-#### добавляем OrderService
+#### в orser Service реализуем методы add и remove
 
 - client\src\app\order-page\order.service.ts
 
-#### layout order-possitions
+#### в шаблон orderPageСomponent добавляем корзину
 
-- client\src\app\order-page\order-possitions\order-possitions.component.html
+- client\src\app\order-page\order-page.component.html
 
-#### логика получения позиций
+#### в шаблон orderCategoriesComponent добавляем название категории по клику
 
-- client\src\app\order-page\order-possitions\order-possitions.component.ts
+- client\src\app\order-page\order-categories\order-categories.component.html
