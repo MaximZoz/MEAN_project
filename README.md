@@ -1,13 +1,13 @@
-## 7.4 Создание заказа
+## 7.5 Сохранение заказа
 
-#### в orser Service реализуем методы add и remove
+#### в orderService реализуем метод clear
 
 - client\src\app\order-page\order.service.ts
 
-#### в шаблон orderPageСomponent добавляем корзину
+#### создаём OrdersService для сохранения заказов, реализуем метод create
 
-- client\src\app\order-page\order-page.component.html
+- client\src\app\shared\services\orders.service.ts
 
-#### в шаблон orderCategoriesComponent добавляем название категории по клику
+#### в orderPageComponent обращаемся к OrdersService, сохраняем заказ
 
-- client\src\app\order-page\order-categories\order-categories.component.html
+- client\src\app\order-page\order-page.component.ts

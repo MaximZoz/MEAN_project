@@ -8,9 +8,11 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MaterialService } from '../shared/classes/materialService';
-import { OrderPosition } from '../shared/interfaces';
+import { Order, OrderPosition } from '../shared/interfaces';
+import { OrdersService } from '../shared/services/orders.service';
 import { MaterialInstance } from './../shared/classes/materialService';
 import { OrderService } from './order.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-page',
@@ -23,14 +25,24 @@ export class OrderPageComponent implements OnInit, OnDestroy, AfterViewInit {
 
   isRoot!: boolean;
   modal!: MaterialInstance;
+  pending = false;
+  oSub!: Subscription;
 
-  constructor(private router: Router, public order: OrderService) {}
+  constructor(
+    private router: Router,
+    public order: OrderService,
+    private ordersService: OrdersService
+  ) {}
   ngAfterViewInit(): void {
     this.modal = MaterialService.initModal(this.modalRef);
   }
   ngOnDestroy(): void {
     const modal = this.modal as any;
     modal.destroy();
+
+    if (this.oSub) {
+      this.oSub.unsubscribe();
+    }
   }
 
   ngOnInit() {
@@ -53,7 +65,28 @@ export class OrderPageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.order.remove(orderPosition);
   }
   submit() {
+    this.pending = true;
     const modal = this.modal as any;
     modal.close();
+    const order: Order = {
+      list: this.order.list.map((item) => {
+        delete item._id;
+        return item;
+      }) as unknown as OrderPosition[],
+    };
+    const oSub = this.ordersService.create(order).subscribe(
+      (newOrders) => {
+        MaterialService.toast(`Заказ №${newOrders.order} был добавлен`);
+        this.order.clear();
+      },
+      (error) => {
+        MaterialService.toast(error.error.message);
+      },
+      () => {
+        const modal = this.modal as any;
+        modal.close();
+        this.pending = false;
+      }
+    );
   }
 }

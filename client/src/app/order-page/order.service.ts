@@ -31,7 +31,10 @@ export class OrderService {
     this.list = this.list.filter((p) => p._id !== orderPosition._id);
     this.computePrice();
   }
-  clear() {}
+  clear() {
+    this.list = [];
+    this.price = 0;
+  }
 
   public getCategories(categories: string) {
     this.categories = categories;
