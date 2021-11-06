@@ -1,13 +1,13 @@
-## 7.5 Сохранение заказа
+## 7.6 создание и изменение категорий
 
-#### в orderService реализуем метод clear
+#### в PositionsService добавляем методы create update и delete
 
-- client\src\app\order-page\order.service.ts
+- client\src\app\shared\services\positions.service.ts
 
-#### создаём OrdersService для сохранения заказов, реализуем метод create
+#### в PositionFormComponent регистрируем форму, реализовываем логику создания формы
 
-- client\src\app\shared\services\orders.service.ts
+- client\src\app\categories-page\categories-form\positions-form\positions-form.component.ts
 
-#### в orderPageComponent обращаемся к OrdersService, сохраняем заказ
+#### в шаблоне PositionFormComponent создаём создаём шаблон с реактивной формой
 
-- client\src\app\order-page\order-page.component.ts
+- client\src\app\categories-page\categories-form\positions-form\positions-form.component.html
