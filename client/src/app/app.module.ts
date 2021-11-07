@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component';
+import { HistoryListComponent } from './history-page/history-list/history-list.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderComponent } from './shared/components/loader/loader.component';
@@ -28,6 +30,8 @@ import { TokenInterceptor } from './shared/classes/tokenInterceptor';
     AuthLayoutComponent,
     CategoriesFormComponent,
     CategoriesPageComponent,
+    HistoryFilterComponent,
+    HistoryListComponent,
     HistoryPageComponent,
     LoaderComponent,
     LoginPageComponent,

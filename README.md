@@ -1,13 +1,9 @@
-## 7.6 создание и изменение категорий
+## 8.1 Создание разметки страницы истории
 
-#### в PositionsService добавляем методы create update и delete
+#### создаём HistoryPageComponent, в нем HistoryListComponent и HistoryFilterComponent
 
-- client\src\app\shared\services\positions.service.ts
+- client\src\app\history-page
 
-#### в PositionFormComponent регистрируем форму, реализовываем логику создания формы
+#### создаём initTooltip в materialService инициализируем его в компоненте
 
-- client\src\app\categories-page\categories-form\positions-form\positions-form.component.ts
-
-#### в шаблоне PositionFormComponent создаём создаём шаблон с реактивной формой
-
-- client\src\app\categories-page\categories-form\positions-form\positions-form.component.html
+- client\src\app\shared\classes\materialService.ts
