@@ -1,11 +1,5 @@
-## 8.2 Загрузка элементов и пагинация
+## 8.3 Отображение заказов
 
-#### в OrdersService создаём метод fetch для get запроса получения заказов с параметром шага пагинации 
+#### в HistoryListComponent реализовываем открытие и закрытие модального окна, вывод данных заказа
 
-- client\src\app\shared\services\orders.service.ts
-#### в HistoryPageComponent реализовываем метод loadMore и fetch для запроса с шагом пагинации
-
-- client\src\app\history-page\history-page.component
-#### в HistoryListComponent реализовываем отобрашение полученных заказов
-
-- client\src\app\history-page\history-list\history-list.component
+- client\src\app\history-page\history-list
