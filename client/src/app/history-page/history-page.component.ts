@@ -11,7 +11,7 @@ import {
   MaterialInstance,
   MaterialService,
 } from '../shared/classes/materialService'
-import { Order } from '../shared/interfaces'
+import { Filter, Order } from '../shared/interfaces'
 import { OrdersService } from '../shared/services/orders.service'
 
 const STEP = 2
@@ -29,7 +29,8 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
   orders: Order[] = []
   loading: boolean = false
   reloading: boolean = false
-  noMoreOrders:boolean = false
+  noMoreOrders: boolean = false
+  filter: Filter = {}
 
   @ViewChild('tooltip') tooltipRef!: ElementRef
 
@@ -41,10 +42,10 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private fetch() {
-    const params = {
+    const params = Object.assign({}, this.filter, {
       offset: this.offset,
       limit: this.limit,
-    }
+    })
 
     this.oSub = this.ordersService.fetch(params).subscribe((orders) => {
       this.orders = this.orders.concat(orders)
@@ -65,7 +66,19 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.oSub.unsubscribe()
     tooltip.destroy()
   }
+
   ngAfterViewInit() {
     this.tooltip = MaterialService.initTooltip(this.tooltipRef)
+  }
+
+  applyFilter(filter: Filter) {
+    this.orders = []
+    this.offset = 0
+    this.filter = filter
+    this.reloading = true
+    this.fetch()
+  }
+  isFiltered(): boolean {
+    return Object.keys(this.filter).length !== 0
   }
 }

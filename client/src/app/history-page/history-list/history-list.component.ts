@@ -28,19 +28,21 @@ export class HistoryListComponent implements OnDestroy, AfterViewInit {
     this.modal = MaterialService.initModal(this.modalRef)
   }
   ngOnDestroy(): void {
-    ;(this.modal as any).destroy()
+    const modal = this.modal as any
+    modal.destroy()
   }
 
   selectOrder(order: Order) {
     this.selectedOrder = order
 
     const modal = this.modal as any
-    modal.open()
+
+    modal?.open()
   }
 
   computePrice(order: Order): number {
     return order.list.reduce(
-      (total, item) => (total += item.quantity * item.cost),
+      (total, item) => (total += item?.quantity * item?.cost),
       0,
     )
   }

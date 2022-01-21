@@ -1,5 +1,13 @@
-## 8.3 Отображение заказов
+## 8.4 Разработка фильтра
 
-#### в HistoryListComponent реализовываем открытие и закрытие модального окна, вывод данных заказа
+#### создаем интерфейс фильтра
 
-- client\src\app\history-page\history-list
+- client\src\app\shared\interfaces.ts
+
+#### реализуем логику фильтра
+
+- client\src\app\history-page\history-filter\history-filter.component.ts
+
+#### реализуем логику фильтра
+
+- метод submitFilter по клику
