@@ -1,16 +1,11 @@
-const express = require(
-  'express'
-)
-const router = express.Router()
-const controller = require('../controllers/analytics')
+import { Router } from "express";
+import { overview, analytics } from "../controllers/analytics";
+import { passport } from "passport";
 
+const router = Router();
 
 //*
-router.get(
-'/overview', controller.overview
-)
-router.get(
-'/analytics', controller.analytics
-)
+router.get("/overview", passport.authenticate("jwt", { session: false }), overview);
+router.get("/analytics", passport.authenticate("jwt", { session: false }), analytics);
 
-module.exports = router
+export default router;

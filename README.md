@@ -1,13 +1,5 @@
-## 8.4 Разработка фильтра
+## 9.1 Вычисление данных аналитики
 
-#### создаем интерфейс фильтра
+#### добавляем overview в контроллер analytics
 
-- client\src\app\shared\interfaces.ts
-
-#### реализуем логику фильтра
-
-- client\src\app\history-page\history-filter\history-filter.component.ts
-
-#### реализуем логику фильтра
-
-- метод submitFilter по клику
+- controllers\analytics.js
