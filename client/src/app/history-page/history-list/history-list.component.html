@@ -41,9 +41,9 @@
 
       <tbody>
         <tr *ngFor="let order of selectedOrder.list">
-          <td>{{ order.name }}</td>
-          <td>{{ order.quantity }}</td>
-          <td>{{ order.cost }}</td>
+          <td>{{ order?.name }}</td>
+          <td>{{ order?.quantity }}</td>
+          <td>{{ order?.cost }}</td>
         </tr>
       </tbody>
     </table>

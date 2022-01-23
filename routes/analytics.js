@@ -1,11 +1,10 @@
-import { Router } from "express";
-import { overview, analytics } from "../controllers/analytics";
-import { passport } from "passport";
-
-const router = Router();
+const express = require("express");
+const router = express.Router();
+const controller = require("../controllers/analytics");
+const passport = require("passport");
 
 //*
-router.get("/overview", passport.authenticate("jwt", { session: false }), overview);
-router.get("/analytics", passport.authenticate("jwt", { session: false }), analytics);
+router.get("/overview", passport.authenticate("jwt", { session: false }), controller.overview);
+router.get("/analytics", passport.authenticate("jwt", { session: false }), controller.analytics);
 
-export default router;
+module.exports = router;

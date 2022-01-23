@@ -1,26 +1,39 @@
-import { Order } from "../models/Order";
-import { errorHandler } from "../utils/errorHandler";
-import { moment } from "moment";
+const moment = require("moment");
+const Order = require("../models/Order");
+const errorHandler = require("../utils/errorHandler");
 
-export async function overview(req, res) {
+module.exports.overview = async function (req, res) {
   try {
-    const allOrders = await Order.find({ userId: req.user.id }).sort(1);
-    const ordersMap = getOrderMap(allOrders);
-    const yesterdayOrders = ordersMap[moment().add(-1, "d")].format("DD.MM.YYYY") || []; //* список всех заказов которые были вчера
+    const allOrders = await Order.find({ user: req.user.id }).sort({ date: 1 });
+    const ordersMap = getOrdersMap(allOrders);
+    console.log('🚀 ~ ordersMap', ordersMap)
+    const yesterdayOrders = ordersMap[moment().add(-1, "d").format("DD.MM.YYYY")] || [];
+    console.log('🚀 ~ yesterdayOrders', yesterdayOrders)
 
-    const totalOrderNumber = allOrder.length; //* количество заказов
-    const daysNumber = Object.keys(ordersMap).length; //* всего количество дней
-    const orderPerDay = (totalOrderNumber / daysNumber).toFixed(0); //* количество заказов в день
-    const yesterdayOrderNumber = yesterdayOrders.length; //* количество заказов вчера
-    const totalGain = calculatePrice(allOrders); //* общая выручка
-
-    const gainPerDay = totalGain / daysNumber; //* выручка в день
-    const yesterdayGain = calculatePrice(yesterdayOrders); //* выручка за вчера
-
-    const gainPercent = ((yesterdayGain / gainPerDay - 1) * 100).toFixed(2); //* процент выручки
-    const compareGain = (yesterdayGain - gainPerDay).toFixed(2); //* сравнение выручки
-    const ordersPercent = ((yesterdayOrderNumber / orderPerDay - 1) * 100).toFixed(2); //* процент для количества заказов
-    const compareNumber = (yesterdayOrderNumber - orderPerDay).toFixed(2); //* сравнение количества заказов
+    // Количество заказов вчера
+    const yesterdayOrdersNumber = yesterdayOrders.length;
+    console.log('🚀 ~ yesterdayOrdersNumber', yesterdayOrdersNumber)
+    // Количество заказов
+    const totalOrdersNumber = allOrders.length;
+    // Количество дней всего
+    const daysNumber = Object.keys(ordersMap).length;
+    // Заказов в день
+    const ordersPerDay = (totalOrdersNumber / daysNumber).toFixed(0);
+    // ((заказов вчера \ кол-во заказов в день) - 1) * 100
+    // Процент для кол-ва заказов
+    const ordersPercent = ((yesterdayOrdersNumber / ordersPerDay - 1) * 100).toFixed(2);
+    // Общая выручка
+    const totalGain = calculatePrice(allOrders);
+    // Выручка в день
+    const gainPerDay = totalGain / daysNumber;
+    // Выручка за вчера
+    const yesterdayGain = calculatePrice(yesterdayOrders);
+    // Процент выручки
+    const gainPercent = ((yesterdayGain / gainPerDay - 1) * 100).toFixed(2);
+    // Сравнение выручки
+    const compareGain = (yesterdayGain - gainPerDay).toFixed(2);
+    // Сравнение кол-ва заказов
+    const compareNumber = (yesterdayOrdersNumber - ordersPerDay).toFixed(2);
 
     res.status(200).json({
       gain: {
@@ -29,29 +42,34 @@ export async function overview(req, res) {
         yesterday: +yesterdayGain,
         isHigher: +gainPercent > 0,
       },
-      order: {
+      orders: {
         percent: Math.abs(+ordersPercent),
         compare: Math.abs(+compareNumber),
-        yesterday: +yesterdayOrderNumber,
+        yesterday: +yesterdayOrdersNumber,
         isHigher: +ordersPercent > 0,
       },
     });
   } catch (e) {
     errorHandler(res, e);
   }
-}
+};
 
-function getOrderMap(orders = []) {
+module.exports.analytics = function (req, res) {};
+
+function getOrdersMap(orders = []) {
   const daysOrders = {};
   orders.forEach((order) => {
     const date = moment(order.date).format("DD.MM.YYYY");
-    if (date == moment().format("DD.MM.YYYY")) {
+
+    if (date === moment().format("DD.MM.YYYY")) {
       return;
     }
+
     if (!daysOrders[date]) {
       daysOrders[date] = [];
     }
-    return daysOrders[date].push(order);
+
+    daysOrders[date].push(order);
   });
   return daysOrders;
 }
@@ -59,10 +77,8 @@ function getOrderMap(orders = []) {
 function calculatePrice(orders = []) {
   return orders.reduce((total, order) => {
     const orderPrice = order.list.reduce((orderTotal, item) => {
-      return (orderTotal += item.cost * item.quantity);
+      return (orderTotal += item?.cost * item?.quantity);
     }, 0);
     return (total += orderPrice);
   }, 0);
 }
-
-export function analytics(req, res) {}
