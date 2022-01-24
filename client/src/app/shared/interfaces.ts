@@ -47,9 +47,19 @@ export interface OverviewPage {
   gain?: OverviewPageItem;
   orders?: OverviewPageItem;
 }
+export interface AnalyticsPage {
+  average: number;
+  chart: AnalyticsChartItem[];
+}
 export interface OverviewPageItem {
   percent: number;
   compare: number;
   yesterday: number;
   isHigher: boolean;
+}
+
+export interface AnalyticsChartItem {
+  order: number;
+  gain: number;
+  label: number;
 }
