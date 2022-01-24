@@ -6,13 +6,10 @@ module.exports.overview = async function (req, res) {
   try {
     const allOrders = await Order.find({ user: req.user.id }).sort({ date: 1 });
     const ordersMap = getOrdersMap(allOrders);
-    console.log('🚀 ~ ordersMap', ordersMap)
     const yesterdayOrders = ordersMap[moment().add(-1, "d").format("DD.MM.YYYY")] || [];
-    console.log('🚀 ~ yesterdayOrders', yesterdayOrders)
 
     // Количество заказов вчера
     const yesterdayOrdersNumber = yesterdayOrders.length;
-    console.log('🚀 ~ yesterdayOrdersNumber', yesterdayOrdersNumber)
     // Количество заказов
     const totalOrdersNumber = allOrders.length;
     // Количество дней всего
@@ -54,7 +51,30 @@ module.exports.overview = async function (req, res) {
   }
 };
 
-module.exports.analytics = function (req, res) {};
+module.exports.analytics = async function (req, res) {
+  try {
+    const allOrders = await Order.find({ user: req.user.id }).sort({ date: 1 });
+    const ordersMap = getOrdersMap(allOrders);
+    const average = +(calculatePrice(allOrders) / Object.keys(ordersMap).length).toFixed(0); //* средний  чек
+    const chart = Object.keys(ordersMap).map((label) => {
+      //? lable == 05.05.2021
+      const gain = calculatePrice(ordersMap[label]);
+      const order = ordersMap[label].length;
+
+      return {
+        label,
+        order,
+        gain,
+      };
+    });
+    res.status(200).json({
+      average,
+      chart,
+    });
+  } catch (error) {
+    errorHandler(res, error);
+  }
+};
 
 function getOrdersMap(orders = []) {
   const daysOrders = {};
@@ -77,7 +97,7 @@ function getOrdersMap(orders = []) {
 function calculatePrice(orders = []) {
   return orders.reduce((total, order) => {
     const orderPrice = order.list.reduce((orderTotal, item) => {
-      return (orderTotal += item?.cost * item?.quantity);
+      return (orderTotal += +item?.cost * +item?.quantity);
     }, 0);
     return (total += orderPrice);
   }, 0);

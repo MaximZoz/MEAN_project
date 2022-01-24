@@ -1,16 +1,5 @@
-## 9.2  Создание страницы обзор 
+## 9.3 Вычисление данных для графиков
 
-#### добавляем верстку в overview-page
+#### контроллер для аналитики
 
-- client\src\app\overview-page\overview-page.component.html
-
-#### создаем сервис для запросов, пишем запрос
-
-getOverview
-getAnalytics
-
-- client\src\app\shared\services\analytics.service.ts
-
-#### создаем интерфейс OverviewPage динамически отображаем показатели
-
-- client\src\app\shared\interfaces.ts
+- controllers\analytics.js

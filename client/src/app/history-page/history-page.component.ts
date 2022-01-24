@@ -14,7 +14,7 @@ import {
 import { Filter, Order } from '../shared/interfaces'
 import { OrdersService } from '../shared/services/orders.service'
 
-const STEP = 2
+const STEP = 8
 @Component({
   selector: 'app-history-page',
   templateUrl: './history-page.component.html',
