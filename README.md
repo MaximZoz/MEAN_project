@@ -1,9 +1,12 @@
-## 9.4 Подготовка страницы аналитики
+## 9.5 Отрисовка графиков
 
-#### забираем нативные элементы gain и order графиков из canvas с помощью ViewChild
+#### устанавливаем библиотеку для графиков
 
-- client\src\app\analytics-page\analytics-page.component.html
+#### устанавливаем библиотеку для графиков
 
-#### в AnalyticsService реализуем метод getAnalytics
+- cd client
+- npm i chart.js
 
-- client\src\app\shared\services\analytics.service.ts
+#### пишем аналитику
+
+- client\src\app\analytics-page\analytics-page.component.ts
